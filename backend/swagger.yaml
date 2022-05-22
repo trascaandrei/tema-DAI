@@ -1,0 +1,95 @@
+openapi: 3.0.0
+info:
+  title: DAI-Auth
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+paths:
+  /api/auth/signin:
+    post:
+      tags:
+        - General
+      summary: Sign-In
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                username: username1
+                password: '12345678'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/auth/signup:
+    post:
+      tags:
+        - General
+      summary: Sign-Up
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                username: username1
+                email: username1@mail.com
+                password: '12345678'
+                roles:
+                  - user
+                  - admin
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/auth/signout:
+    post:
+      tags:
+        - General
+      summary: Sign-Out
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                username: username1
+                password: '12345678'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/test/all:
+    get:
+      tags:
+        - General
+      summary: Access public resource
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/test/user:
+    get:
+      tags:
+        - General
+      summary: Access protected resource
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/test/admin:
+    get:
+      tags:
+        - General
+      summary: Access admin resources
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
