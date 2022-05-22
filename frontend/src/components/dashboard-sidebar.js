@@ -17,7 +17,7 @@ const items = [
   {
     href: '/account',
     icon: (<UserIcon fontSize="small" />),
-    title: 'Account'
+    title: 'Cont'
   },
 ];
 
