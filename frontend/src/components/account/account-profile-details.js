@@ -31,8 +31,6 @@ export const AccountProfileDetails = (props) => {
     lastName: 'Smith',
     email: 'demo@devias.io',
     phone: '',
-    state: 'Alabama',
-    country: 'USA'
   });
 
   const handleChange = (event) => {
@@ -50,8 +48,8 @@ export const AccountProfileDetails = (props) => {
     >
       <Card>
         <CardHeader
-          subheader="The information can be edited"
-          title="Profile"
+          subheader="Informațiile de mai jos pot fi modificate"
+          title="Profil"
         />
         <Divider />
         <CardContent>
@@ -66,8 +64,8 @@ export const AccountProfileDetails = (props) => {
             >
               <TextField
                 fullWidth
-                helperText="Please specify the first name"
-                label="First name"
+                helperText="Introduceți prenumele"
+                label="Prenume"
                 name="firstName"
                 onChange={handleChange}
                 required
@@ -82,7 +80,8 @@ export const AccountProfileDetails = (props) => {
             >
               <TextField
                 fullWidth
-                label="Last name"
+                helperText="Introduceți numele"
+                label="Nume"
                 name="lastName"
                 onChange={handleChange}
                 required
@@ -97,7 +96,7 @@ export const AccountProfileDetails = (props) => {
             >
               <TextField
                 fullWidth
-                label="Email Address"
+                label="Adresa email"
                 name="email"
                 onChange={handleChange}
                 required
@@ -112,54 +111,13 @@ export const AccountProfileDetails = (props) => {
             >
               <TextField
                 fullWidth
-                label="Phone Number"
+                label="Număr de telefon"
                 name="phone"
                 onChange={handleChange}
                 type="number"
                 value={values.phone}
                 variant="outlined"
               />
-            </Grid>
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
-              <TextField
-                fullWidth
-                label="Country"
-                name="country"
-                onChange={handleChange}
-                required
-                value={values.country}
-                variant="outlined"
-              />
-            </Grid>
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
-              <TextField
-                fullWidth
-                label="Select State"
-                name="state"
-                onChange={handleChange}
-                required
-                select
-                SelectProps={{ native: true }}
-                value={values.state}
-                variant="outlined"
-              >
-                {states.map((option) => (
-                  <option
-                    key={option.value}
-                    value={option.value}
-                  >
-                    {option.label}
-                  </option>
-                ))}
-              </TextField>
             </Grid>
           </Grid>
         </CardContent>
@@ -175,7 +133,7 @@ export const AccountProfileDetails = (props) => {
             color="primary"
             variant="contained"
           >
-            Save details
+            Salvare
           </Button>
         </Box>
       </Card>

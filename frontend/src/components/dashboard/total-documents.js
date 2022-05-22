@@ -16,13 +16,13 @@ export const TotalDocuments = (props) => (
             gutterBottom
             variant="overline"
           >
-            TOTAL DOCUMENTS
+            DOCUMENTE TOTALE
           </Typography>
           <Typography
             color="textPrimary"
             variant="h4"
           >
-            1,6k
+            4
           </Typography>
         </Grid>
         <Grid item>
@@ -51,13 +51,13 @@ export const TotalDocuments = (props) => (
             mr: 1
           }}
         >
-          16%
+          25%
         </Typography>
         <Typography
           color="textSecondary"
           variant="caption"
         >
-          Since last month
+          față de luna trecută
         </Typography>
       </Box>
     </CardContent>

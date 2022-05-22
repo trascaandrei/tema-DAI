@@ -26,15 +26,9 @@ export const DocumentsListToolbar = (props) => (
         sx={{ m: 1 }}
         variant="h4"
       >
-        Documents
+        Documente
       </Typography>
       <Box sx={{ m: 1 }}>
-        <Button
-          startIcon={(<UploadIcon fontSize="small" />)}
-          sx={{ mr: 1 }}
-        >
-          Import
-        </Button>
         <Button
           startIcon={(<DownloadIcon fontSize="small" />)}
           sx={{ mr: 1 }}
@@ -45,7 +39,7 @@ export const DocumentsListToolbar = (props) => (
           color="primary"
           variant="contained"
         >
-          Add documents
+          Adaugă
         </Button>
       </Box>
     </Box>
@@ -67,7 +61,7 @@ export const DocumentsListToolbar = (props) => (
                   </InputAdornment>
                 )
               }}
-              placeholder="Search documents"
+              placeholder="Caută documente"
               variant="outlined"
             />
           </Box>
