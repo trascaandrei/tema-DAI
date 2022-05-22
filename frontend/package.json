@@ -21,22 +21,28 @@
     "@mui/lab": "^5.0.0-alpha.53",
     "@mui/material": "^5.0.6",
     "@mui/styles": "^5.0.2",
+    "axios": "^0.27.2",
     "chart.js": "^3.5.1",
     "date-fns": "^2.25.0",
     "formik": "^2.1.5",
     "history": "^5.0.0",
     "next": "^12.0.3-canary.7",
     "nprogress": "^0.2.0",
-    "prop-types": "^15.7.2",
+    "prop-types": "^15.8.1",
     "react": "^17.0.2",
     "react-chartjs-2": "^3.0.4",
     "react-dom": "^17.0.2",
     "react-perfect-scrollbar": "^1.5.8",
+    "react-redux": "^8.0.1",
+    "react-router-dom": "^6.3.0",
+    "redux": "^4.2.0",
+    "redux-thunk": "^2.4.1",
     "uuid": "^8.3.0",
     "yup": "^0.32.9"
   },
   "devDependencies": {
     "eslint": "^7.32.0",
-    "eslint-config-next": "12.0.3-canary.7"
+    "eslint-config-next": "12.0.3-canary.7",
+    "redux-devtools-extension": "^2.13.9"
   }
 }
