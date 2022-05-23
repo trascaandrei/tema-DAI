@@ -3,17 +3,16 @@ import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { Box, Button, Container, Grid, Link, TextField, Typography } from '@mui/material';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import { Facebook as FacebookIcon } from '../icons/facebook';
-import { Google as GoogleIcon } from '../icons/google';
+import { Box, Button, Container, Link, TextField, Typography } from '@mui/material';
+import AuthService from '../services/auth.service'
+
 
 const Login = () => {
   const router = useRouter();
   const formik = useFormik({
     initialValues: {
-      email: 'demo@devias.io',
-      password: 'Password123'
+      email: '',
+      password: ''
     },
     validationSchema: Yup.object({
       email: Yup
@@ -30,7 +29,19 @@ const Login = () => {
           'Password is required')
     }),
     onSubmit: () => {
-      router.push('/');
+      AuthService
+        .login(
+          formik.values.email,
+          formik.values.password
+        )
+        .then(res => {
+          if (localStorage.getItem('user')) {
+            router.push('/');
+          }
+        })
+        .catch(err => {
+          console.log(err)
+        })
     }
   });
 

@@ -13,7 +13,7 @@ import {
   TextField,
   Typography
 } from '@mui/material';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import AuthService from '../services/auth.service'
 
 const Register = () => {
   const router = useRouter();
@@ -56,7 +56,17 @@ const Register = () => {
         )
     }),
     onSubmit: () => {
-      router.push('/');
+      AuthService
+        .register(
+          `${formik.values.firstName}.${formik.values.lastName}`, formik.values.email, 
+          formik.values.password
+        )
+        .then((res) => {
+          console.log(res)
+          if (res.status === 200) {
+            router.push('/login');
+          }
+        })
     }
   });
 

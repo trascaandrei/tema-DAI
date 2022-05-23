@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import {useEffect} from 'react'
 import { Box, Container, Grid } from '@mui/material';
 import { DocumentsListResults } from '../components/dashboard/documents-list-results';
 import { DocumentsListToolbar } from '../components/dashboard/documents-list-toolbar';
@@ -6,18 +7,18 @@ import { TasksProgress } from '../components/dashboard/tasks-progress';
 import { TotalDocuments } from '../components/dashboard/total-documents';
 import { DashboardLayout } from '../components/dashboard-layout';
 import { documents } from '../__mocks__/documents';
-import { Redirect } from 'react-router-dom';
-import { useSelector } from "react-redux";
-import { Provider } from 'react-redux'
-import store from '../store';
-
-console.log(store.getState())
+import Router from 'next/router'
 
 const Dashboard = () => {
-  const { user: currentUser } = useSelector((state) => state.auth);
-  if (!currentUser) {
-    return <Redirect to="/login" />;
-  }
+  const user = JSON.parse(typeof window !== 'undefined' ? localStorage.getItem('user') : null);
+
+  useEffect(() => {
+    if (!user) {
+      Router.push('/login')
+    }
+  })
+
+
   
   return (
     <>
