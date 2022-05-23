@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   Box,
   Button,
@@ -26,10 +26,24 @@ const states = [
 ];
 
 export const AccountProfileDetails = (props) => {
+  const user = JSON.parse(typeof window !== 'undefined' ? localStorage.getItem('user') : null);
+
+  useEffect(() => {
+    if (user) {
+      const names = user.username.split('.')
+      setValues({
+        ...values,
+        firstName: names[0].charAt(0).toUpperCase() + names[0].slice(1),
+        lastName: names[1].charAt(0).toUpperCase() + names[1].slice(1),
+        email: user.email
+      })
+    }
+  })
+
   const [values, setValues] = useState({
-    firstName: 'Katarina',
-    lastName: 'Smith',
-    email: 'demo@devias.io',
+    firstName: '',
+    lastName: '',
+    email: '',
     phone: '',
   });
 
