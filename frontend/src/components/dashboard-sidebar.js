@@ -1,12 +1,11 @@
 import { useEffect } from 'react';
-import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
-import { Box, Divider, Drawer, useMediaQuery } from '@mui/material';
+import { Box, Divider, Drawer, useMediaQuery, Button } from '@mui/material';
 import { ChartBar as ChartBarIcon } from '../icons/chart-bar';
 import { User as UserIcon } from '../icons/user';
-import { Logo } from './logo';
 import { NavItem } from './nav-item';
+import AuthService from '../services/auth.service'
 
 const items = [
   {
@@ -52,23 +51,6 @@ export const DashboardSidebar = (props) => {
           height: '100%'
         }}
       >
-        <div>
-          <Box sx={{ p: 3 }}>
-            <NextLink
-              href="/"
-              passHref
-            >
-              <a>
-                <Logo
-                  sx={{
-                    height: 42,
-                    width: 42
-                  }}
-                />
-              </a>
-            </NextLink>
-          </Box>
-        </div>
         <Divider
           sx={{
             borderColor: '#2D3748',
@@ -85,6 +67,9 @@ export const DashboardSidebar = (props) => {
             />
           ))}
         </Box>
+        <Button onClick={() => { AuthService.logout(); router.push('/login'); }}>
+          Logout
+        </Button>
         <Divider sx={{ borderColor: '#2D3748' }} />
       </Box>
     </>

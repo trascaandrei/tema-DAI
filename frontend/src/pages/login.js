@@ -35,8 +35,14 @@ const Login = () => {
           formik.values.password
         )
         .then(res => {
-          if (localStorage.getItem('user')) {
-            router.push('/');
+          const user = JSON.parse(localStorage.getItem('user'))
+          
+          if (user) {
+            if (user.roles.includes('ROLE_ADMIN')) {
+              router.push('/admin');
+            } else {
+              router.push('/');
+            }
           }
         })
         .catch(err => {

@@ -11,12 +11,16 @@ import {
   FormHelperText,
   Link,
   TextField,
-  Typography
+  Typography,
+  Snackbar,
+  Alert
 } from '@mui/material';
 import AuthService from '../services/auth.service'
+import { useState } from 'react';
 
 const Register = () => {
   const router = useRouter();
+  const [snackbar, setSnackbar] = useState(false);
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -64,7 +68,10 @@ const Register = () => {
         .then((res) => {
           console.log(res)
           if (res.status === 200) {
-            router.push('/login');
+            setSnackbar(true);
+            setTimeout(() => {
+              router.push('/login');
+            }, 5000);
           }
         })
     }
@@ -223,6 +230,12 @@ const Register = () => {
           </form>
         </Container>
       </Box>
+
+      <Snackbar open={snackbar} autoHideDuration={6000} anchorOrigin={{vertical: 'top', horizontal: 'center'}}>
+        <Alert severity="success" sx={{ width: '100%' }}>
+          Contul dumneavoastră a fost înregistrat cu succes! După ce contul va fi confirmat de un administrator, vă veți putea autentifica.
+        </Alert>
+      </Snackbar>
     </>
   );
 };
