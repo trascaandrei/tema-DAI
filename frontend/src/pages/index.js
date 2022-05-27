@@ -1,16 +1,21 @@
 import Head from 'next/head';
-import {useEffect} from 'react'
+import {useEffect, useState} from 'react'
 import { Box, Container, Grid } from '@mui/material';
 import { DocumentsListResults } from '../components/dashboard/documents-list-results';
 import { DocumentsListToolbar } from '../components/dashboard/documents-list-toolbar';
 import { TasksProgress } from '../components/dashboard/tasks-progress';
 import { TotalDocuments } from '../components/dashboard/total-documents';
 import { DashboardLayout } from '../components/dashboard-layout';
-import { documents } from '../__mocks__/documents';
+import FormService from '../services/form.service'
 import Router from 'next/router'
 
 const Dashboard = () => {
   const user = JSON.parse(typeof window !== 'undefined' ? localStorage.getItem('user') : null);
+  let [documents, setDocuments] = useState([])
+
+  FormService.getForms().then(res => {
+    setDocuments(res);
+  })
 
   useEffect(() => {
     if (!user) {
@@ -46,7 +51,7 @@ const Dashboard = () => {
               sm={6}
               xs={12}
             >
-              <TotalDocuments />
+              <TotalDocuments documentsNumber={documents.length}/>
             </Grid>
             <Grid
               item

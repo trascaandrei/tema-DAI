@@ -12,7 +12,10 @@ import {
 	TableHead,
 	TablePagination,
 	TableRow,
+	Button
 } from '@mui/material';
+import FormService from '../../services/form.service'
+import Router from 'next/router'
 
 export const DocumentsListResults = ({ documents, ...rest }) => {
 	const [selectedDocumentsIds, setSelectedDocumentsIds] = useState([]);
@@ -58,6 +61,18 @@ export const DocumentsListResults = ({ documents, ...rest }) => {
 	const handlePageChange = (event, newPage) => {
 		setPage(newPage);
 	};
+
+	const editForm = (formId) => {
+		Router.push(`/formular?id=${formId}`)
+	}
+
+	const generateForm = (formId) => {
+		FormService.generateForm(formId);
+	}
+
+	const deleteForm = (formId) => {
+		FormService.deleteFormById(formId);
+	}
 
 	return (
 		<Card {...rest}>
@@ -115,7 +130,26 @@ export const DocumentsListResults = ({ documents, ...rest }) => {
 										{documents.name}
 									</TableCell>
 									<TableCell>
-										<a style={{color: 'blue'}}>Modifică</a> | <a style={{color: 'red'}}>Șterge</a>
+										<Button 
+											variant='text' 
+											onClick={() => editForm(documents.id)}
+										>
+											Editează
+										</Button>
+										<Button 
+											variant='text' 
+											color="secondary"
+											onClick={() => generateForm(documents.id)}
+										>
+											Generează
+										</Button>
+										<Button 
+											variant='text'
+											color="error" 
+											onClick={() => deleteForm(documents.id)}
+										>
+											Șterge
+										</Button>
 									</TableCell>
 								</TableRow>
 							))}

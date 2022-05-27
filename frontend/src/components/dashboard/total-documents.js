@@ -22,7 +22,7 @@ export const TotalDocuments = (props) => (
             color="textPrimary"
             variant="h4"
           >
-            4
+            {props.documentsNumber}
           </Typography>
         </Grid>
         <Grid item>

@@ -8,8 +8,8 @@ import {
   SvgIcon, Typography
 } from '@mui/material';
 import { Search as SearchIcon } from '../../icons/search';
-import { Upload as UploadIcon } from '../../icons/upload';
 import { Download as DownloadIcon } from '../../icons/download';
+import Router from 'next/router'
 
 export const DocumentsListToolbar = (props) => (
   <Box {...props}>
@@ -38,6 +38,7 @@ export const DocumentsListToolbar = (props) => (
         <Button
           color="primary"
           variant="contained"
+          onClick={() => { Router.push('/formular') }}
         >
           Adaugă
         </Button>
