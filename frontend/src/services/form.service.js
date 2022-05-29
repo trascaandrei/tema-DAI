@@ -5,15 +5,14 @@ import { formular } from '../__mocks__/formular' // DELETE
 
 const API_URL = "http://localhost:8080/api/form/";
 
+
 // Intoarce lista de useri (fara admini). Formatul trebuie sa fie cel
 // din __mocks__/documents.js
 const getForms = () => {
-    return Promise.resolve(documents) // DELETE
-    
+
     return axios
-        .get(`${API_URL}`, {
-            ...authHeader()
-        })
+        .get(`${API_URL}`,
+        {"Authorization" : `Bearer ${authHeader()}`})
         .then(res => {
             return res.data
         })
@@ -22,7 +21,6 @@ const getForms = () => {
 // Adauga un formular nou. Formatul trimis va fi cel din din __mocks__/formular.js.
 // Intoarce { success: true/false }
 const addForm = (formData) => {
-    return Promise.resolve(true) // DELETE
 
     return axios
         .post(
@@ -40,7 +38,6 @@ const addForm = (formData) => {
 // Modifica un formular existent. Formatul trimis va fi cel din din __mocks__/formular.js
 // Intoarce { success: true/false }
 const updateForm = (formData, formId) => {
-    return Promise.resolve(true) // DELETE
 
     return axios
         .post(
@@ -57,7 +54,6 @@ const updateForm = (formData, formId) => {
 
 // Primeste campurile dintr-un formular. Formatul trimis va fi cel din din __mocks__/formular.js
 const getFormById = (formId) => {
-    return Promise.resolve(formular) // DELETE
 
     return axios
         .get(
@@ -73,7 +69,6 @@ const getFormById = (formId) => {
 
 // Intoarce { success: true/false }
 const deleteFormById = (formId) => {
-    return Promise.resolve(true) // DELETE
 
     return axios
         .delete(
@@ -90,7 +85,6 @@ const deleteFormById = (formId) => {
 // Genereaza un tabel dintr-un formular. Trebuie sa intoarca inapoi un excel.
 // Pe asta nu am cum sa o testez, va trebui sa vedem dupa ce o implementati
 const generateForm = (formId) => {
-    // return Promise.resolve(true) // DELETE
     return axios
         .get(
             `${API_URL}generate/${formId}`, 
