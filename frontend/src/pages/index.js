@@ -9,13 +9,18 @@ import { DashboardLayout } from '../components/dashboard-layout';
 import FormService from '../services/form.service'
 import Router from 'next/router'
 
+let initialized = false;
+
 const Dashboard = () => {
   const user = JSON.parse(typeof window !== 'undefined' ? localStorage.getItem('user') : null);
   let [documents, setDocuments] = useState([])
 
-  FormService.getForms().then(res => {
-    setDocuments(res);
-  })
+  if (!initialized) {
+    initialized = true;
+    FormService.getForms().then(res => {
+      setDocuments(res);
+    })
+  }
 
   useEffect(() => {
     if (!user) {

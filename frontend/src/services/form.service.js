@@ -7,40 +7,37 @@ const API_URL = "http://localhost:8080/api/form/";
 
 // Intoarce lista de useri (fara admini). Formatul trebuie sa fie cel
 // din __mocks__/documents.js
-const getForms = () => {
-    return Promise.resolve(documents) // DELETE
-    
+const getForms = () => {    
     return axios
         .get(`${API_URL}`, {
             ...authHeader()
         })
         .then(res => {
-            return res.data
+            return res.data.documents;
         })
 }
 
 // Adauga un formular nou. Formatul trimis va fi cel din din __mocks__/formular.js.
 // Intoarce { success: true/false }
 const addForm = (formData) => {
-    return Promise.resolve(true) // DELETE
-
     return axios
         .post(
             `${API_URL}add`, 
-            formData,
+            {
+                formular: formData
+            },
             {
                 ...authHeader()
             }
         )
         .then(res => {
-            return res.data.success;
+            return res.data;
         })
 }
 
 // Modifica un formular existent. Formatul trimis va fi cel din din __mocks__/formular.js
 // Intoarce { success: true/false }
 const updateForm = (formData, formId) => {
-    return Promise.resolve(true) // DELETE
 
     return axios
         .post(
@@ -51,16 +48,29 @@ const updateForm = (formData, formId) => {
             }
         )
         .then(res => {
-            return res.data.success;
+            return res.data;
         })
 }
 
 // Primeste campurile dintr-un formular. Formatul trimis va fi cel din din __mocks__/formular.js
 const getFormById = (formId) => {
-    return Promise.resolve(formular) // DELETE
-
     return axios
         .get(
+            `${API_URL}${formId}`, 
+            {
+                ...authHeader()
+            }
+        )
+        .then(res => {
+            return res.data.formular.doc.formData[0];
+        })
+}
+
+// Intoarce { success: true/false }
+const deleteFormById = (formId) => {
+
+    return axios
+        .delete(
             `${API_URL}${formId}`, 
             {
                 ...authHeader()
@@ -71,26 +81,9 @@ const getFormById = (formId) => {
         })
 }
 
-// Intoarce { success: true/false }
-const deleteFormById = (formId) => {
-    return Promise.resolve(true) // DELETE
-
-    return axios
-        .delete(
-            `${API_URL}${formId}`, 
-            {
-                ...authHeader()
-            }
-        )
-        .then(res => {
-            return res.data.success;
-        })
-}
-
 // Genereaza un tabel dintr-un formular. Trebuie sa intoarca inapoi un excel.
 // Pe asta nu am cum sa o testez, va trebui sa vedem dupa ce o implementati
 const generateForm = (formId) => {
-    // return Promise.resolve(true) // DELETE
     return axios
         .get(
             `${API_URL}generate/${formId}`, 
