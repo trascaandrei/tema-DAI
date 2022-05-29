@@ -56,7 +56,7 @@ const Dashboard = () => {
               sm={6}
               xs={12}
             >
-              <TotalDocuments documentsNumber={documents.length}/>
+              <TotalDocuments documentsnumber={documents.length}/>
             </Grid>
             <Grid
               item

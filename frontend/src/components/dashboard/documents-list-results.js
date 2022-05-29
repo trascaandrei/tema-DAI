@@ -26,7 +26,7 @@ export const DocumentsListResults = ({ documents, ...rest }) => {
 		let newSelectedDocumentsIds;
 
 		if (event.target.checked) {
-			newSelectedDocumentsIds = documents.map((documents) => documents.id);
+			newSelectedDocumentsIds = documents.map((documents) => documents._id);
 		} else {
 			newSelectedDocumentsIds = [];
 		}
@@ -110,13 +110,13 @@ export const DocumentsListResults = ({ documents, ...rest }) => {
 							{documents.slice(0, limit).map((documents) => (
 								<TableRow
 									hover
-									key={documents.id}
-									selected={selectedDocumentsIds.indexOf(documents.id) !== -1}
+									key={documents._id}
+									selected={selectedDocumentsIds.indexOf(documents._id) !== -1}
 								>
 									<TableCell padding="checkbox">
 										<Checkbox
-											checked={selectedDocumentsIds.indexOf(documents.id) !== -1}
-											onChange={(event) => handleSelectOne(event, documents.id)}
+											checked={selectedDocumentsIds.indexOf(documents._id) !== -1}
+											onChange={(event) => handleSelectOne(event, documents._id)}
 											value="true"
 										/>
 									</TableCell>
@@ -132,21 +132,21 @@ export const DocumentsListResults = ({ documents, ...rest }) => {
 									<TableCell>
 										<Button 
 											variant='text' 
-											onClick={() => editForm(documents.id)}
+											onClick={() => editForm(documents._id)}
 										>
 											Editează
 										</Button>
 										<Button 
 											variant='text' 
 											color="secondary"
-											onClick={() => generateForm(documents.id)}
+											onClick={() => generateForm(documents._id)}
 										>
 											Generează
 										</Button>
 										<Button 
 											variant='text'
 											color="error" 
-											onClick={() => deleteForm(documents.id)}
+											onClick={() => deleteForm(documents._id)}
 										>
 											Șterge
 										</Button>
