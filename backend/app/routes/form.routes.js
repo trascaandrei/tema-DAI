@@ -10,7 +10,7 @@ module.exports = function(app) {
     next();
   });
 
-  app.get('/api/form/generate/:formId', controller.generateForm);
+  app.get('/api/form/generate/:formId',  [authJwt.verifyToken], controller.generateForm);
 
   app.get('/api/form/',  [authJwt.verifyToken], controller.getForms);
 
