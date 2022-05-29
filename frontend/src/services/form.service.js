@@ -90,11 +90,10 @@ const deleteFormById = (formId) => {
 // Genereaza un tabel dintr-un formular. Trebuie sa intoarca inapoi un excel.
 // Pe asta nu am cum sa o testez, va trebui sa vedem dupa ce o implementati
 const generateForm = (formId) => {
-    return Promise.resolve(true) // DELETE
-
+    // return Promise.resolve(true) // DELETE
     return axios
         .get(
-            `${API_URL}${formId}`, 
+            `${API_URL}generate/${formId}`, 
             {
                 ...authHeader()
             }
