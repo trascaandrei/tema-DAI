@@ -62,7 +62,7 @@ const getFormById = (formId) => {
             }
         )
         .then(res => {
-            return res.data.formular;
+            return res.data.formular.doc.formData[0];
         })
 }
 

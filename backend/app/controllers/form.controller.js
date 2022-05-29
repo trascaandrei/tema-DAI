@@ -71,7 +71,9 @@ exports.getFormById = (req, res) => {
     }
     
     res.status(200).send({
-      formular: doc
+      formular: {
+        doc
+      }
     })
   })
 }
