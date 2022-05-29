@@ -5,8 +5,7 @@ const User = db.user;
 const Role = db.role;
 
 verifyToken = (req, res, next) => {
-  let token = req.get('authorization');
-  console.log(req.get('authorization'))
+  let token = req.headers['authorization'].replace(/^Bearer\s+/, "");;
 
   if (!token) {
     return res.status(403).send({ message: "No token provided!" });

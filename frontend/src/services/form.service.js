@@ -5,16 +5,15 @@ import { formular } from '../__mocks__/formular' // DELETE
 
 const API_URL = "http://localhost:8080/api/form/";
 
-
 // Intoarce lista de useri (fara admini). Formatul trebuie sa fie cel
 // din __mocks__/documents.js
-const getForms = () => {
-
+const getForms = () => {    
     return axios
-        .get(`${API_URL}`,
-        {"Authorization" : `Bearer ${authHeader()}`})
+        .get(`${API_URL}`, {
+            ...authHeader()
+        })
         .then(res => {
-            return res.data
+            return res.data.documents;
         })
 }
 
