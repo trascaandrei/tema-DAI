@@ -20,17 +20,18 @@ const getForms = () => {
 // Adauga un formular nou. Formatul trimis va fi cel din din __mocks__/formular.js.
 // Intoarce { success: true/false }
 const addForm = (formData) => {
-
     return axios
         .post(
             `${API_URL}add`, 
-            formData,
+            {
+                formular: formData
+            },
             {
                 ...authHeader()
             }
         )
         .then(res => {
-            return res.data.success;
+            return res.data;
         })
 }
 
@@ -47,13 +48,12 @@ const updateForm = (formData, formId) => {
             }
         )
         .then(res => {
-            return res.data.success;
+            return res.data;
         })
 }
 
 // Primeste campurile dintr-un formular. Formatul trimis va fi cel din din __mocks__/formular.js
 const getFormById = (formId) => {
-
     return axios
         .get(
             `${API_URL}${formId}`, 
@@ -62,7 +62,7 @@ const getFormById = (formId) => {
             }
         )
         .then(res => {
-            return res.data;
+            return res.data.formular;
         })
 }
 
@@ -77,7 +77,7 @@ const deleteFormById = (formId) => {
             }
         )
         .then(res => {
-            return res.data.success;
+            return res.data;
         })
 }
 

@@ -33,7 +33,7 @@ const validateUser = (userId) => {
             }
         )
         .then(res => {
-            return res.data.success;
+            return res.data;
         })
 }
 
