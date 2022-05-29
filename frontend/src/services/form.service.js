@@ -42,7 +42,9 @@ const updateForm = (formData, formId) => {
     return axios
         .post(
             `${API_URL}update/${formId}`, 
-            formData,
+            {
+                formular: formData
+            },
             {
                 ...authHeader()
             }
